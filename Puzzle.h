@@ -1,12 +1,15 @@
 #pragma once
 
 #include "Point.h"
+#include <string>
 
 enum Direction {
     UP, DOWN, RIGHT, LEFT
 };
 
 class Puzzle {
+    friend class PuzzleNode;
+
 private:
     int puz[3][3];        // board of 8-puzzle
                                // each 'cell' has 1-8 and 0 (which means null space)
@@ -14,17 +17,24 @@ private:
 
 public:
     // initiate 'puz' and 'h'
-    Puzzle();
+    Puzzle(int p[3][3]);
+    Puzzle(const Puzzle& rhs);
 
     // swap p and '0'
     // also calculate h
     // returns false if cannot swap
     bool swap(Direction dir);
+    // returns this->h
+    int geth() const;
 
-#ifdef DEBUG
+    // example:
+    // 412
+    // 630      =>   "412630758"
+    // 758
+    std::string serialize();
+
     // print the current puzzle table & h to stdout
-    void print();
-#endif
+    void print() const;
 
 private:
     // calculate h of current puzTable

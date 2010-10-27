@@ -1,0 +1,28 @@
+Usage:
+        Executable files (Linux ELF) are already in this directory.
+
+                   $ ./solv1
+                   $ ./solv2
+
+        Each command produce the solution of [2](i) and [2](ii).
+
+Installation:
+        To build these two files above, you need boost library.
+        Just
+                $ make
+        produces 'solv', which is equals to 'solv1' above.
+        To get 'solv2', modify 'Puzzle.cpp' to:
+
+           l.11,12:     //calch1();
+                        calch2();
+
+           l50,51:      //calch1();
+                        calch2();
+
+Notes:
+        This program uses 'tree.hh', which is an STL-like implement of tree data structure.
+        Since library has GPL license, this program should also be publicshed under GPL.
+
+        The original source code is:
+
+            http://www.laysakura.net/src/8-puzzle.tar

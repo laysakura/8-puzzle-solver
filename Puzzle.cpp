@@ -2,31 +2,22 @@
 #include <iostream>
 #include <cstdlib>
 
-Puzzle::Puzzle()
+Puzzle::Puzzle(int p[3][3])
 {
-    // initiate the puzzle
-    setNum(4, Point(0, 0));
-    setNum(1, Point(1, 0));
-    setNum(2, Point(2, 0));
-    setNum(6, Point(0, 1));
-    setNum(3, Point(1, 1));
-    setNum(0, Point(2, 1));
-    setNum(7, Point(0, 2));
-    setNum(5, Point(1, 2));
-    setNum(8, Point(2, 2));
-
-    // setNum(1, Point(0, 0));
-    // setNum(2, Point(1, 0));
-    // setNum(3, Point(2, 0));
-    // setNum(4, Point(0, 1));
-    // setNum(5, Point(1, 1));
-    // setNum(6, Point(2, 1));
-    // setNum(7, Point(0, 2));
-    // setNum(8, Point(1, 2));
-    // setNum(0, Point(2, 2));
+    for (int y = 0; y < 3; y++)
+        for (int x = 0; x < 3; x++)
+            setNum(p[y][x], Point(x, y));
 
     calch1();
-    //calch2();
+}
+
+Puzzle::Puzzle(const Puzzle& rhs)
+{
+    for (int y = 0; y < 3; y++)
+        for (int x = 0; x < 3; x++)
+            setNum(rhs.getNum(Point(x, y)), Point(x, y));
+
+    h = rhs.h;
 }
 
 bool Puzzle::swap(Direction dir)
@@ -60,8 +51,21 @@ bool Puzzle::swap(Direction dir)
     return true;
 }
 
-#ifdef DEBUG
-void Puzzle::print()
+int Puzzle::geth() const
+{
+    return h;
+}
+
+std::string Puzzle::serialize()
+{
+    std::string ret;
+    for (int y = 0; y < 3; y++)
+        for (int x = 0; x < 3; x++)
+            ret += getNum(Point(x, y)) + '0';
+    return ret;
+}
+
+void Puzzle::print() const
 {
     std::cout << "-- h = " << h << " --" << std::endl;
 
@@ -73,7 +77,6 @@ void Puzzle::print()
     }
     std::cout << std::endl;
 }
-#endif
 
 void Puzzle::calch1()
 {
