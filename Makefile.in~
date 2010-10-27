@@ -1,0 +1,16 @@
+CXX	= g++
+CXXFLAGS	= -DDEBUG -g -Wall
+LDFLAGS	= 
+INCLUDES = -I./include
+#LIBS	= -lboost_regex
+
+.PHONY: all
+all : $(TARGETS)
+
+.PHONY: clean
+clean :
+	rm -f $(TARGETS) $(OBJS) $(DEPENDS)
+
+%.o : %.cpp %.h
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $*.cpp $(LIBS)
+
