@@ -9,6 +9,13 @@ PuzzleTree::PuzzleTree(int p[3][3])
     registPuzzleToHTable((*it).puz.serialize());
 }
 
+PuzzleTree::PuzzleTree(const std::string& puzSerialized)
+    : ptree(PuzzleNode(Puzzle(puzSerialized), 0)),
+      htable(HASH_TABLE_SZ, false)
+{
+    registPuzzleToHTable(puzSerialized);
+}
+
 void PuzzleTree::genChildren(const tree<PuzzleNode>::iterator& it)
 {
     Puzzle pu((*it).puz);
@@ -52,10 +59,10 @@ void PuzzleTree::printTrack(tree<PuzzleNode>::iterator it) const
 {
     tree<PuzzleNode>::iterator root = ptree.begin();
     while (it != root) {
-        (*it).puz.print();
+        (*it).puz.print((*it).g, (*it).f);
         it = ptree.parent(it);
     }
-    (*it).puz.print();
+    (*it).puz.print((*it).g, (*it).f);
 }
 
 void PuzzleTree::registPuzzleToHTable(const std::string& ps)

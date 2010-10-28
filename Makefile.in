@@ -1,5 +1,5 @@
 CXX	= g++
-CXXFLAGS	= -DDEBUG -g -Wall
+CXXFLAGS	= -O2 -Wall
 LDFLAGS	= 
 
 .PHONY: all

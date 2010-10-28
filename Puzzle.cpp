@@ -8,7 +8,18 @@ Puzzle::Puzzle(int p[3][3])
         for (int x = 0; x < 3; x++)
             setNum(p[y][x], Point(x, y));
 
-    calch1();
+//    calch1();
+    calch2();
+}
+
+Puzzle::Puzzle(const std::string& puzSerialized)
+{
+    for (int y = 0; y < 3; y++)
+        for (int x = 0; x < 3; x++)
+            setNum(puzSerialized[x + 3 * y] - '0', Point(x, y));
+
+//    calch1();
+    calch2();
 }
 
 Puzzle::Puzzle(const Puzzle& rhs)
@@ -47,7 +58,7 @@ bool Puzzle::swap(Direction dir)
         break;
     }
     calch1();
-    //calch2();
+//    calch2();
     return true;
 }
 
@@ -65,9 +76,9 @@ std::string Puzzle::serialize()
     return ret;
 }
 
-void Puzzle::print() const
+void Puzzle::print(int g, int f) const
 {
-    std::cout << "-- h = " << h << " --" << std::endl;
+    std::cout << "-- h = " << h << ", g = " << g << ", f = " << f << " --" << std::endl;
 
     for (int y = 0; y < 3; y++) {
         for (int x = 0; x < 3; x++) {

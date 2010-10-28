@@ -18,6 +18,7 @@ private:
 public:
     // initiate 'puz' and 'h'
     Puzzle(int p[3][3]);
+    Puzzle(const std::string& puzSerialized);
     Puzzle(const Puzzle& rhs);
 
     // swap p and '0'
@@ -34,7 +35,7 @@ public:
     std::string serialize();
 
     // print the current puzzle table & h to stdout
-    void print() const;
+    void print(int g, int f) const;
 
 private:
     // calculate h of current puzTable

@@ -22,6 +22,7 @@ private:
 
 public:
     PuzzleTree(int p[3][3]);
+    PuzzleTree(const std::string& puzSerialized);
 
     // never create the same puzzle.
     // uses Puzzle hash table like:
