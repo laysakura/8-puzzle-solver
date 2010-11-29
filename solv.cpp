@@ -27,7 +27,10 @@ void errExit(const std::string& argv0)
               << "\t412" << std::endl
               << "\t630" << "\t=>\t" << "412630758" << std::endl
               << "\t758" << std::endl
-              << std::endl;
+              << std::endl
+              << "Some 8-puzzles are impossible to solve." << std::endl
+              << "If you cannot get an answer for about 5 sec, you should type 'C-c' :-)"
+              << std::endl << std::endl;
     exit(1);
 }
 

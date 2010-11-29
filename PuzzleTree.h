@@ -6,7 +6,7 @@
 class PuzzleTree {
 private:
     // must be greater than the total number of all PuzzleNode
-    static const std::size_t HASH_TABLE_SZ = 10000;
+    static const std::size_t HASH_TABLE_SZ = 1000000;
 
 private:
     tree<PuzzleNode> ptree;

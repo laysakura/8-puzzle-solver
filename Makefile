@@ -2,7 +2,7 @@
 SRCS = $(wildcard *.cpp)
 OBJS=$(patsubst %.cpp,%.o,$(SRCS))
 DEPENDS=$(patsubst %.cpp,%.d,$(SRCS))
-TARGET = solv
+TARGET = 8-puzzle
 TARGETS = $(TARGET)
 
 include Makefile.in			#TARGETSとかの後じゃないとだめ
